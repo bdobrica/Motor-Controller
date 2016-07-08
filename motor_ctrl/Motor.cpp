@@ -1,6 +1,21 @@
 #include "Arduino.h"
 #include "Motor.h"
 
+Motor::Motor () {
+  _step = 0;
+  _dir = 0;
+  _enable = 0;
+
+  _min = 0;
+  _max = 0;
+
+  _enabled = false;
+
+  _forward = true;
+  _homed = false;
+  _where = MOTOR_GOTO_HOME_MIN;
+  }
+
 Motor::Motor (uint8_t step, uint8_t dir, uint8_t enable, uint8_t min, uint8_t max, boolean invert) {
 	pinMode (_step = step, OUTPUT);
 	pinMode (_dir = dir, OUTPUT);
@@ -16,7 +31,7 @@ Motor::Motor (uint8_t step, uint8_t dir, uint8_t enable, uint8_t min, uint8_t ma
 
 	_forward = !invert;
 	_homed = false;
-	_where = false;
+	_where = MOTOR_GOTO_HOME_MIN;
 	}
   
 void Motor::enable () {

@@ -22,6 +22,7 @@
 
 class Motor {
 	public:
+    Motor ();
 		Motor (uint8_t step, uint8_t dir, uint8_t enable, uint8_t min, uint8_t max, boolean invert = false);
 		void enable ();
 		void disable ();
